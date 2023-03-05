@@ -28,12 +28,75 @@
 */
 
 #include <iostream>
+    using namespace std;
+    int main()
+    {
+        setlocale(LC_ALL, "Russian");
+        int n, n1, R, R1;
+        cin >> n;
+        int M13 = 0, m13 = 0, M2 = 0, m2 = 0, M = 0, m = 0;
+        for (int i = 0; i < n; i++)
+        {
+            cin >> n1;
+            if (n1 % 26 == 0)
+            {
+                n1 = -1;
+            }
+            if (n1 >= M13 && n1 % 13 == 0)
+            {
+                m13 = M13;
+                M13 = n1;
+            }
+            if (n1 >= m13 && n1 < M13 && n % 13 == 0)
+            {
+                m13 = n1;
+            }
+            if (n1 >= M2 && n1 % 2 == 0)
+            {
+                m2 = M2;
+                M2 = n1;
+            }
+            if (n1 > m2 && n1 < M2 && n % 2 == 0)
+            {
+                m2 = n1;
+            }
+            if (n1 >= M && n1 % 13 != 0 && n1 % 2 != 0)
+            {
+                m = M;
+                M = n1;
+            }
+            if (n1 >= m && n1 < M && n1 % 13 != 0 && n1 % 2 != 0)
+            {
+                m = n1;
+            }
+        }
 
-using namespace std;
+        cin >> R;
+        if (M13 > M && M13 > M2)
+        {
+            m = max(m13, M);
+            M = M13;
+        }
+        if (M2 > M && M2 > M13)
+        {
+            m = max(m2, M);
+            M = M2;                       
+        }
+        if (M > M13 && M > M2)
+        {
+            int m1 = 0;
+            m1 = max(m, M2);
+            m = max(m1, M13);
+        }
 
-int main()
-{
-
-    
-    return 0;
-}
+        R1 = M * m;
+        if (R != R1)
+        {
+            cout << "Контроль не пройден";
+            return 0;
+        }
+        if (R1 == R)
+        {
+            cout << "Вычисленное контрольное значение:" << R << "\n" << "Контроль пройден";
+        }
+    }
