@@ -2,7 +2,7 @@
 
 
 void AEROFLOT::init_and_enter_points() {
-	
+	cout << "\nInit and enter points\n";
 }
 
 
@@ -27,16 +27,9 @@ void AEROFLOT::setPlanetype(const string& plane_type) {
 }*/
 
 
-void AEROFLOT::setIntermediatePoints(int lenght, char type_enter) {
+void AEROFLOT::setIntermediatePoints(int lenght) {
 	m_lenght = lenght;
 	m_intermediate_points = new string[lenght];
-
-	for (int i = 0; i < m_lenght, ++i) {
-		switch (type_enter) {
-		case 0:
-			
-		}
-	}
 }
 
 
